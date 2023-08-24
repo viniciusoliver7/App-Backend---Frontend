@@ -1,0 +1,25 @@
+.Box-pie{
+    background-color: #327345;
+    border-radius: 2rem;
+}
+
+.titulo{
+    font-size: 10px;
+}
+.buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+button{
+    background-image: linear-gradient(to right, #1BBF49, #22F35E);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}

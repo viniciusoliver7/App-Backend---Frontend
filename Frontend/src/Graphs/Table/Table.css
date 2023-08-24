@@ -1,10 +1,16 @@
+
 .tabela{
-    max-height: 50vh;
+    max-height: 60vh;
     overflow-y:scroll;
+    
 }
 .tabela th,
 .tabela td{
     padding: 10px;
     text-align: center;
-    border: 1px solid;
+    border: 2px solid #ddd;
+}
+.tabela-style{
+    border-collapse: collapse;
+    border:2px solid #333;
 }

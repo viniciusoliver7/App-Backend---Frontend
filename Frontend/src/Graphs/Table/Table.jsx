@@ -6,7 +6,7 @@ export default function Table() {
 
   return (
     <div className="tabela">
-    <table>
+    <table className="tabela-style">
       <thead>
         <tr>
           <th>Nome</th>

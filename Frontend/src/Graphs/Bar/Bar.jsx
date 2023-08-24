@@ -1,5 +1,5 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import "./Bar.css"
 export default function Barchart() {
     const data = [
         {
@@ -46,12 +46,14 @@ export default function Barchart() {
         },
       ];
     return(
+      <div className='box-bar'>
         <BarChart width={500} height={400} data={data}>
-          <Bar dataKey="uv" fill="#5A7060" />
+          <Bar dataKey="uv" fill="#6CF492" />
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name" stroke="#8884d8"/>
           <Tooltip/>
         </BarChart>
+        </div>
     )
 
 
