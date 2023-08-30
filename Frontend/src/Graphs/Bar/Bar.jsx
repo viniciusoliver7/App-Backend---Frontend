@@ -1,61 +1,66 @@
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import "./Bar.css"
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import "./Bar.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 export default function Barchart() {
-    const data = [
-        {
-          name: 'Page A',
-          uv: 4000,
-          pv: 2400,
-          amt: 2400,
-        },
-        {
-          name: 'Page B',
-          uv: 3000,
-          pv: 1398,
-          amt: 2210,
-        },
-        {
-          name: 'Page C',
-          uv: 2000,
-          pv: 9800,
-          amt: 2290,
-        },
-        {
-          name: 'Page D',
-          uv: 2780,
-          pv: 3908,
-          amt: 2000,
-        },
-        {
-          name: 'Page E',
-          uv: 1890,
-          pv: 4800,
-          amt: 2181,
-        },
-        {
-          name: 'Page F',
-          uv: 2390,
-          pv: 3800,
-          amt: 2500,
-        },
-        {
-          name: 'Page G',
-          uv: 3490,
-          pv: 4300,
-          amt: 2100,
-        },
-      ];
-    return(
-      <div className='box-bar'>
-        <BarChart width={500} height={400} data={data}>
-          <Bar dataKey="uv" fill="#6CF492" />
-          <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="name" stroke="#8884d8"/>
-          <Tooltip/>
-        </BarChart>
-        </div>
-    )
+  const [dados, setDados] = useState([]);
+  const [title, setTitle] = useState("Empresas com as maiores compras");
+  const [isDisabled1,setIsDisabled1] = useState(true)
+  const [isDisabled2,setIsDisabled2] = useState(false)
 
 
-    
+  async function fetchData(ordem) {
+    await axios
+      .get(`http://54.91.65.106/acquisitionsprice?limit=10&orderby=${ordem}`)
+      .then((response) => {
+        setDados(response.data);
+      });
+  }
+  useEffect(() => {
+    fetchData("asc");
+  }, []);
+
+  function setDataMenor() {
+    fetchData("desc")
+    setIsDisabled2(true)
+    setIsDisabled1(false)
+    setTitle("Empresas com as menores compras")
+
+  }
+
+  function setDataMaior() {
+    fetchData("asc")
+    setIsDisabled2(false)
+    setIsDisabled1(true)
+    setTitle("Empresas com as maiores compras")
+
+  }
+
+  return (
+    <div className="box-bar">
+      <div>
+        <h1 className="title-bar">{title}</h1>
+      </div>
+      <BarChart width={1300} height={500} data={dados}>
+        <CartesianGrid stroke="#ccc" />
+        <XAxis dataKey="Acquiring Company" stroke="#ccc" />
+        <YAxis tick={{ fill: "#ccc" }} axisLine={{ stroke: "#ccc" }} />
+        <Tooltip />
+        <Bar dataKey="Price" fill="#6CF492" />
+      </BarChart>
+      <button onClick={setDataMaior} disabled={isDisabled1}>Maiores Compras</button>
+      <button onClick={setDataMenor} disabled={isDisabled2}>Menores Compras</button>
+    </div>
+  );
 }

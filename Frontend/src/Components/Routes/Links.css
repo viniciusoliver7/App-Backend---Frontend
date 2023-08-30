@@ -1,0 +1,21 @@
+.links{
+    display: flex;
+    align-content: center;
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0px;
+}
+
+.links li{
+    margin: 20px;
+    padding: 7px;
+    border-radius: 20px;
+    color: #B6F7C9;
+    font-weight: bold;
+    background-image: linear-gradient(to left, #6CF492, #55C274);
+    text-decoration: none;
+}
+
+li Links{
+    text-decoration: none;
+}

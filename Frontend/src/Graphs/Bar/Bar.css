@@ -1,6 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 .box-bar{
     background-color: #327345;
     border-radius: 20px;
     padding: 2rem;
+}
+.title-bar{
+    text-align: center;
+    font-family: 'Teko', sans-serif;
+    font-size: 45px;
+    margin: 0;
+    color: #B6F7C9;
+}
+
+.box-bar button{
+    margin: 8px;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: #55C274;
+    color: #b3fbce;
+    font-weight: bold;
+    font-size: 20px;
 
 }
