@@ -6,3 +6,5 @@ df.deleteNull("Companies")
 df.drop_duplicate("Companies")
 df.writeTableDBPostgres(urlDB="jdbc:postgresql://localhost:5432/db",nametable="testePYY",user="postgres",password="******")
 df.getDataFrame().show()
+
+ 
